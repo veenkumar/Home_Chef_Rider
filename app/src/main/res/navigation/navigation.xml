@@ -12,22 +12,43 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/changePassword"
-        android:name="com.veen.homechefrider.fragment.ChangePassword"
+        android:name="com.veen.homechefrider.fragment.side.ChangePassword"
         android:label="Change Password"
         tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/dashboard"
-        android:name="com.veen.homechefrider.fragment.Dashboard"
+        android:name="com.veen.homechefrider.fragment.side.Dashboard"
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.veen.homechefrider.fragment.Profile"
+        android:name="com.veen.homechefrider.fragment.side.Profile"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/logout"
-        android:name="com.veen.homechefrider.fragment.Logout"
+        android:name="com.veen.homechefrider.fragment.side.Logout"
         android:label="Logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/orderList"
+        android:name="com.veen.homechefrider.fragment.side.OrderList"
+        android:label="Order"
+        tools:layout="@layout/fragment_order_list" >
+        <action
+            android:id="@+id/action_orderList_to_viewOrder"
+            app:destination="@id/viewOrder" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewOrder"
+        android:name="com.veen.homechefrider.fragment.ViewOrder"
+        android:label="View Order"
+        tools:layout="@layout/fragment_view_order">
+        <argument
+            android:name="orderID"
+            app:argType="string" />
+        <argument
+            android:name="chefID"
+            app:argType="string" />
+    </fragment>
 </navigation>

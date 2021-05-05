@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "954906026765",
+    "project_id": "home-chef-rider-312806",
+    "storage_bucket": "home-chef-rider-312806.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954906026765:android:dfcb984dafa1a4a1b50644",
+        "android_client_info": {
+          "package_name": "com.veen.homechefrider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954906026765-hu33eo7t5mgi9t42c99fm3si17e0djv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.veen.homechefrider",
+            "certificate_hash": "5c4960a0de9e272e108f0361fcbd6a633c487e04"
+          }
+        },
+        {
+          "client_id": "954906026765-rlqccutvp8qkks1pa0i2lvnkepje27rq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyHC2AE5yJEnGNC_IOFHw0YHpF7CgViXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954906026765-rlqccutvp8qkks1pa0i2lvnkepje27rq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

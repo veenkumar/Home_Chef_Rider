@@ -1,4 +1,4 @@
-package com.veen.homechefrider.fragment
+package com.veen.homechefrider.fragment.side
 
 import android.os.Bundle
 import android.text.TextUtils

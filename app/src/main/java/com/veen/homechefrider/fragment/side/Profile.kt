@@ -1,4 +1,4 @@
-package com.veen.homechefrider.fragment
+package com.veen.homechefrider.fragment.side
 
 import android.Manifest
 import android.app.Activity

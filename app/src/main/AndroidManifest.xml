@@ -17,6 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/Theme.HomeChefRider"
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.Login"
@@ -30,6 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCblk_PoKh0JCPW49I2hw9l1hC2RtlLXHk" />
     </application>
 
 </manifest>

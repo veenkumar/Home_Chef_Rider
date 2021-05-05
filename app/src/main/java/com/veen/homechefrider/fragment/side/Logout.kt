@@ -1,4 +1,4 @@
-package com.veen.homechefrider.fragment
+package com.veen.homechefrider.fragment.side
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import com.veen.homechefrider.R
 import com.veen.homechefrider.activity.Splash
 import com.veen.homechefrider.databinding.FragmentLogoutBinding
-import com.veen.homechefrider.utils.AppUtils
 
 class Logout : Fragment() {
     override fun onCreateView(

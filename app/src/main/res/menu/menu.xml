@@ -11,6 +11,10 @@
         android:icon="@drawable/user"
         android:title="My Profile" />
     <item
+        android:id="@+id/orderList"
+        android:icon="@drawable/ic_baseline_fastfood_24"
+        android:title="Order List" />
+    <item
         android:id="@+id/changePassword"
         android:icon="@drawable/ic_baseline_lock_24"
         android:title="Change Password" />

@@ -2,6 +2,14 @@ package com.veen.homechefrider.api
 
 import com.veen.homechefrider.model.login.LoginReq
 import com.veen.homechefrider.model.login.LoginRes
+import com.veen.homechefrider.model.order.assign.AssignReq
+import com.veen.homechefrider.model.order.assign.AssignRes
+import com.veen.homechefrider.model.order.checkstatus.CheckStatusReq
+import com.veen.homechefrider.model.order.checkstatus.CheckStatusRes
+import com.veen.homechefrider.model.order.status.StatusReq
+import com.veen.homechefrider.model.order.status.StatusRes
+import com.veen.homechefrider.model.order.vieworder.VieworderReq
+import com.veen.homechefrider.model.order.vieworder.VieworderRes
 import com.veen.homechefrider.model.password.PassReq
 import com.veen.homechefrider.model.password.PassRes
 import com.veen.homechefrider.model.profile.image.ImageReq
@@ -51,4 +59,32 @@ interface API {
             @Header("Authorization")token:String,
             @Body imageReq: ImageReq
     ): Call<ImageRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("assign_order")
+    fun assignorder(
+            @Header("Authorization")token:String,
+            @Body assignReq: AssignReq
+    ): Call<AssignRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("view_order_detail")
+    fun vieworder(
+            @Header("Authorization")token:String,
+            @Body vieworderReq: VieworderReq
+    ): Call<VieworderRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("update_order_status")
+    fun orderstatus(
+            @Header("Authorization")token:String,
+            @Body statusReq: StatusReq
+    ): Call<StatusRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("check_order_pickup_status")
+    fun checkstatus(
+            @Header("Authorization")token:String,
+            @Body checkStatusReq: CheckStatusReq
+    ): Call<CheckStatusRes>
 }
