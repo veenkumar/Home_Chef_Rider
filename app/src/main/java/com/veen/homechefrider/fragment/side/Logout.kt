@@ -24,6 +24,7 @@ class Logout : Fragment() {
         requireContext().getSharedPreferences("Token", 0).edit().clear().apply()
 
         startActivity(Intent(requireContext(), Splash::class.java))
+        activity?.finish()
 
         return binding.root
     }

@@ -1,5 +1,7 @@
 package com.veen.homechefrider.api
 
+import com.veen.homechefrider.model.complain.ComplainReq
+import com.veen.homechefrider.model.complain.ComplainRes
 import com.veen.homechefrider.model.login.LoginReq
 import com.veen.homechefrider.model.login.LoginRes
 import com.veen.homechefrider.model.order.assign.AssignReq
@@ -18,6 +20,8 @@ import com.veen.homechefrider.model.profile.update.UpdateProfileReq
 import com.veen.homechefrider.model.profile.update.UpdateProfileRes
 import com.veen.homechefrider.model.profile.view.ViewProfileReq
 import com.veen.homechefrider.model.profile.view.ViewProfileRes
+import com.veen.homechefrider.model.registration.RegisReq
+import com.veen.homechefrider.model.registration.RegisRes
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -87,4 +91,19 @@ interface API {
             @Header("Authorization")token:String,
             @Body checkStatusReq: CheckStatusReq
     ): Call<CheckStatusRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("registration")
+    fun registration(
+        @Body regisReq: RegisReq
+    ): Call<RegisRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("complain")
+    fun complain(
+        @Header("Authorization")token:String,
+        @Body complainReq: ComplainReq
+    ): Call<ComplainRes>
+
+
 }

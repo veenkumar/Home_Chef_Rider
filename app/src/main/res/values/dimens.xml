@@ -31,4 +31,9 @@
     <dimen name="_130sp">130sp</dimen>
     <dimen name="_140sp">140sp</dimen>
     <dimen name="_150sp">150sp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="headerTextSize">25sp</dimen>
+    <dimen name="newsMoreTextSize">12sp</dimen>
+    <dimen name="loginViewsMargin">20dp</dimen>
 </resources>

@@ -15,6 +15,10 @@
         android:icon="@drawable/ic_baseline_fastfood_24"
         android:title="Order List" />
     <item
+        android:id="@+id/complaint"
+        android:icon="@drawable/ic_baseline_inbox_24"
+        android:title="Complaint" />
+    <item
         android:id="@+id/changePassword"
         android:icon="@drawable/ic_baseline_lock_24"
         android:title="Change Password" />

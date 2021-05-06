@@ -14,11 +14,6 @@ object AppUtils {
         return shred?.getString("Login", "") ?: ""
     }
 
-    fun getdeleteLogin(context: Context?) {
-        val shred = context?.getSharedPreferences("Login", AppCompatActivity.MODE_PRIVATE)
-        shred?.edit()?.remove("Login")?.apply()
-    }
-
     fun saveToken(context: Context?, token: String) {
         val shred = context?.getSharedPreferences("Token", AppCompatActivity.MODE_PRIVATE)
         shred?.edit()?.putString("Token", token)?.apply()
@@ -27,10 +22,5 @@ object AppUtils {
     fun getsaveToken(context: Context?): String {
         val shred = context?.getSharedPreferences("Token", AppCompatActivity.MODE_PRIVATE)
         return shred?.getString("Token", "") ?: ""
-    }
-
-    fun getdeleteToken(context: Context?) {
-        val shred = context?.getSharedPreferences("Token", AppCompatActivity.MODE_PRIVATE)
-        shred?.edit()?.remove("Token")?.apply()
     }
 }

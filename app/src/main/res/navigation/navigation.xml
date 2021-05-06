@@ -51,4 +51,9 @@
             android:name="chefID"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/complaint"
+        android:name="com.veen.homechefrider.fragment.side.Complaint"
+        android:label="Complaint"
+        tools:layout="@layout/fragment_complaint" />
 </navigation>
