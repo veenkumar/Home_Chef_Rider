@@ -88,6 +88,9 @@ class Complaint : Fragment() {
                             "" + response.body()!!.msg,
                             Toast.LENGTH_SHORT
                         ).show()
+                        complaintMessage.text.clear()
+                        complaintSubject.text.clear()
+                        complaintImagetext.text = ""
                     }
                 }
 
@@ -113,13 +116,13 @@ class Complaint : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == pickImage) {
             val imageUri = data!!.data
+            complaintImagetext.text = "Image Available"
             val bitmap: Bitmap
             try {
                 bitmap = BitmapFactory.decodeStream(requireActivity().contentResolver.openInputStream(imageUri!!))
 //                val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 500, 500, false)
                 encodedImage = getEncoded64ImageStringFromBitmap(bitmap).toString()
                 Log.e("exp", encodedImage)
-                complaintImage.text = "Image Selected"
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
             }
