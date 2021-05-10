@@ -36,6 +36,7 @@ import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 
 class Complaint : Fragment() {
+    private lateinit var binding: FragmentComplaintBinding
     private val pickImage = 101
     private var encodedImage = ""
     override fun onCreateView(
@@ -44,7 +45,7 @@ class Complaint : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_complaint, container, false)
-        val binding = DataBindingUtil.inflate<FragmentComplaintBinding>(inflater, R.layout.fragment_complaint, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_complaint, container, false)
         val getsaveToken = AppUtils.getsaveToken(requireContext())
         val getsaveLogin = AppUtils.getsaveLogin(requireContext())
         binding.complaintImage.setOnClickListener {
@@ -62,7 +63,7 @@ class Complaint : Fragment() {
             } else if (TextUtils.isEmpty(binding.complaintMessage.text.toString())) {
                 binding.complaintMessage.setError("Field not empty!")
             } else {
-                doComplaint(getsaveToken, getsaveLogin, binding.complaintSubject, binding.complaintMessage)
+                doComplaint(getsaveToken, getsaveLogin)
             }
         }
         return binding.root
@@ -71,14 +72,12 @@ class Complaint : Fragment() {
     private fun doComplaint(
         getsaveToken: String,
         getsaveLogin: String,
-        complaintSubject: EditText,
-        complaintMessage: EditText
     ) {
         try {
             RetrofitInstance.instence?.complain(getsaveToken, ComplainReq(
                 encodedImage,
-                complaintMessage.text.toString(),
-                complaintSubject.text.toString(),
+                binding.complaintMessage.text.toString(),
+                binding.complaintSubject.text.toString(),
                 getsaveLogin.toInt()
             ))!!.enqueue(object : Callback<ComplainRes> {
                 override fun onResponse(call: Call<ComplainRes>, response: Response<ComplainRes>) {
@@ -88,9 +87,9 @@ class Complaint : Fragment() {
                             "" + response.body()!!.msg,
                             Toast.LENGTH_SHORT
                         ).show()
-                        complaintMessage.text.clear()
-                        complaintSubject.text.clear()
-                        complaintImagetext.text = ""
+                        binding.complaintMessage.text.clear()
+                        binding.complaintSubject.text.clear()
+                        binding.complaintImagetext.text = ""
                     }
                 }
 

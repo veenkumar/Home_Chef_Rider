@@ -41,6 +41,7 @@ import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 
 class Profile : Fragment() {
+    private lateinit var binding: FragmentProfileBinding
     private val pickImage = 100
     private var encodedImage = ""
 
@@ -50,7 +51,7 @@ class Profile : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_profile, container, false)
-        val binding = DataBindingUtil.inflate<FragmentProfileBinding>(inflater, R.layout.fragment_profile, container, false)
+        binding = DataBindingUtil.inflate<FragmentProfileBinding>(inflater, R.layout.fragment_profile, container, false)
         val getsaveToken = AppUtils.getsaveToken(requireContext())
         val getsaveLogin = AppUtils.getsaveLogin(requireContext())
 
@@ -71,7 +72,7 @@ class Profile : Fragment() {
             } else if (TextUtils.isEmpty(binding.editAddress.text.toString())) {
                 binding.editAddress.setError("Field not empty")
             } else {
-                doUpdate(getsaveToken, getsaveLogin, binding.editAddress, binding.editMobile, binding.editName)
+                doUpdate(getsaveToken, getsaveLogin)
             }
         }
 
@@ -101,12 +102,12 @@ class Profile : Fragment() {
         return binding.root
     }
 
-    private fun doUpdate(token: String, login: String, editAddress: EditText, editMobile: EditText, editName: EditText) {
+    private fun doUpdate(token: String, login: String) {
         try {
             RetrofitInstance.instence?.updateprofile(token, UpdateProfileReq(
-                    editAddress.text.toString(),
-                    editName.text.toString(),
-                    editMobile.text.toString(),
+                binding.editAddress.text.toString(),
+                binding.editName.text.toString(),
+                binding.editMobile.text.toString(),
                     login.toInt()
             ))!!.enqueue(object : Callback<UpdateProfileRes> {
                 override fun onResponse(call: Call<UpdateProfileRes>, response: Response<UpdateProfileRes>) {

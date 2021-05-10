@@ -12,13 +12,14 @@ import com.veen.homechefrider.activity.Splash
 import com.veen.homechefrider.databinding.FragmentLogoutBinding
 
 class Logout : Fragment() {
+    private lateinit var binding: FragmentLogoutBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_logout, container, false)
-        val binding = DataBindingUtil.inflate<FragmentLogoutBinding>(inflater, R.layout.fragment_logout, container, false)
+        binding = DataBindingUtil.inflate<FragmentLogoutBinding>(inflater, R.layout.fragment_logout, container, false)
 
         requireContext().getSharedPreferences("Login", 0).edit().clear().apply()
         requireContext().getSharedPreferences("Token", 0).edit().clear().apply()

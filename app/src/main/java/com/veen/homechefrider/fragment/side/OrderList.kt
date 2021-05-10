@@ -24,11 +24,12 @@ import retrofit2.Response
 
 
 class OrderList : Fragment() {
+    private lateinit var binding: FragmentOrderListBinding
     private lateinit var orderRecycler: RecyclerView
     private lateinit var adapter: AssignOrderAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<FragmentOrderListBinding>(inflater, R.layout.fragment_order_list, container, false)
+        binding = DataBindingUtil.inflate<FragmentOrderListBinding>(inflater, R.layout.fragment_order_list, container, false)
         orderRecycler = binding.orderRecycler
         val getsaveToken = AppUtils.getsaveToken(requireContext())
         val getsaveLogin = AppUtils.getsaveLogin(requireContext())

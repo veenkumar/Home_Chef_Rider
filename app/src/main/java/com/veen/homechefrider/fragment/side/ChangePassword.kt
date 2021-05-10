@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.veen.homechefrider.R
@@ -22,13 +21,14 @@ import retrofit2.Response
 import java.util.regex.Pattern
 
 class ChangePassword : Fragment() {
+    private lateinit var binding: FragmentChangePasswordBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_change_password, container, false)
-        val binding = DataBindingUtil.inflate<FragmentChangePasswordBinding>(inflater, R.layout.fragment_change_password, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_change_password, container, false)
         val regexPassword =
             Pattern.compile("(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d])(?=.*[~`!@#\\$%\\^&\\*\\(\\)\\-_\\+=\\{\\}\\[\\]\\|\\;:\"<>,./\\?]).{8,}")
 
@@ -49,7 +49,7 @@ class ChangePassword : Fragment() {
                 ).show()
             } else {
                 if (binding.newpassword?.text.toString() == binding.confirmpassword?.text.toString()) {
-                    changePassword(binding.newpassword, binding.oldpassword, binding.confirmpassword)
+                    changePassword()
                 } else {
                     Toast.makeText(
                             requireContext(),
@@ -63,25 +63,21 @@ class ChangePassword : Fragment() {
         return binding.root
     }
 
-    private fun changePassword(
-        newpassword: EditText,
-        oldpassword: EditText,
-        confirmpassword: EditText
-    ) {
+    private fun changePassword() {
         try {
             val getsaveToken = AppUtils.getsaveToken(requireContext())
             val getsaveLogin = AppUtils.getsaveLogin(requireContext())
             RetrofitInstance.instence?.passchange(getsaveToken, PassReq(
-                    newpassword.text.toString(),
-                    oldpassword.text.toString(),
+                binding.newpassword.text.toString(),
+                binding.oldpassword.text.toString(),
                     getsaveLogin.toInt()
             ))!!.enqueue(object : Callback<PassRes> {
                 override fun onResponse(call: Call<PassRes>, response: Response<PassRes>) {
                     if (response.isSuccessful) {
                         Toast.makeText(requireContext(), "" + response.body()!!.msg, Toast.LENGTH_SHORT).show()
-                        newpassword.text.clear()
-                        oldpassword.text.clear()
-                        confirmpassword.text.clear()
+                        binding.newpassword.text.clear()
+                        binding.oldpassword.text.clear()
+                        binding.confirmpassword.text.clear()
                     }
                 }
 

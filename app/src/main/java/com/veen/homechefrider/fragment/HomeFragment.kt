@@ -22,7 +22,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.GroundOverlayOptions
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.veen.homechefrider.R
 import com.veen.homechefrider.databinding.FragmentHomeBinding
 import java.util.*
@@ -105,9 +104,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
                             // Add a marker in Sydney and move the camera
                             val location = LatLng(currentLocationLatitute, currentLocationLongitute)
-                            mMap.addMarker(MarkerOptions()
+
+                            /*mMap.addMarker(MarkerOptions()
                                     .position(location)
-                                    .title("My Location"))
+                                    .title("My Location"))*/
 
                             val androidOverlay = GroundOverlayOptions()
                                     .image(BitmapDescriptorFactory.fromResource(R.drawable.back))
@@ -116,14 +116,18 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, zoomLevel))
                             mMap.addGroundOverlay(androidOverlay)
 
-                            mMap.setOnPoiClickListener { poi ->
+
+
+
+
+                            /*mMap.setOnPoiClickListener { poi ->
                                 val poiMarker = mMap.addMarker(
                                         MarkerOptions()
                                                 .position(poi.latLng)
                                                 .title(poi.name)
                                 )
                                 poiMarker.showInfoWindow()
-                            }
+                            }*/
 
 //                                var address:String = addresses[0].getAddressLine(0)
 //                                clocation!!.text = address

@@ -17,7 +17,11 @@
     <item
         android:id="@+id/complaint"
         android:icon="@drawable/ic_baseline_inbox_24"
-        android:title="Complaint" />
+        android:title="Complain" />
+    <item
+        android:id="@+id/viewComplain"
+        android:icon="@drawable/ic_baseline_move_to_inbox_24"
+        android:title="Send Complain" />
     <item
         android:id="@+id/changePassword"
         android:icon="@drawable/ic_baseline_lock_24"

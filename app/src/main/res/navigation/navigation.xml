@@ -56,4 +56,9 @@
         android:name="com.veen.homechefrider.fragment.side.Complaint"
         android:label="Complaint"
         tools:layout="@layout/fragment_complaint" />
+    <fragment
+        android:id="@+id/viewComplain"
+        android:name="com.veen.homechefrider.fragment.side.ViewComplain"
+        android:label="Send Complain"
+        tools:layout="@layout/fragment_view_complain" />
 </navigation>

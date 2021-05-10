@@ -2,8 +2,14 @@ package com.veen.homechefrider.api
 
 import com.veen.homechefrider.model.complain.ComplainReq
 import com.veen.homechefrider.model.complain.ComplainRes
+import com.veen.homechefrider.model.complain.view.ViewComplaintReq
+import com.veen.homechefrider.model.complain.view.ViewComplaintRes
+import com.veen.homechefrider.model.dashboard.DashboardReq
+import com.veen.homechefrider.model.dashboard.DashboardRes
 import com.veen.homechefrider.model.login.LoginReq
 import com.veen.homechefrider.model.login.LoginRes
+import com.veen.homechefrider.model.message.MessageReq
+import com.veen.homechefrider.model.message.MessageRes
 import com.veen.homechefrider.model.order.assign.AssignReq
 import com.veen.homechefrider.model.order.assign.AssignRes
 import com.veen.homechefrider.model.order.checkstatus.CheckStatusReq
@@ -105,5 +111,25 @@ interface API {
         @Body complainReq: ComplainReq
     ): Call<ComplainRes>
 
+    @Headers("Content-Type: application/json")
+    @POST("complain_list")
+    fun complainlist(
+        @Header("Authorization")token:String,
+        @Body viewComplaintReq: ViewComplaintReq
+    ): Call<ViewComplaintRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("view_message")
+    fun viewmessgae(
+        @Header("Authorization")token:String,
+        @Body messageReq: MessageReq
+    ): Call<MessageRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("count_on_time_late_order")
+    fun viewdashboard(
+        @Header("Authorization")token:String,
+        @Body dashboardReq: DashboardReq
+    ): Call<DashboardRes>
 
 }
