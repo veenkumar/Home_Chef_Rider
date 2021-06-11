@@ -6,6 +6,8 @@ import com.veen.homechefrider.model.complain.view.ViewComplaintReq
 import com.veen.homechefrider.model.complain.view.ViewComplaintRes
 import com.veen.homechefrider.model.dashboard.DashboardReq
 import com.veen.homechefrider.model.dashboard.DashboardRes
+import com.veen.homechefrider.model.location.LocationReq
+import com.veen.homechefrider.model.location.LocationRes
 import com.veen.homechefrider.model.login.LoginReq
 import com.veen.homechefrider.model.login.LoginRes
 import com.veen.homechefrider.model.message.MessageReq
@@ -28,6 +30,10 @@ import com.veen.homechefrider.model.profile.view.ViewProfileReq
 import com.veen.homechefrider.model.profile.view.ViewProfileRes
 import com.veen.homechefrider.model.registration.RegisReq
 import com.veen.homechefrider.model.registration.RegisRes
+import com.veen.homechefrider.model.report.ReportReq
+import com.veen.homechefrider.model.report.complete.CompleteRes
+import com.veen.homechefrider.model.report.escalate.EscalateRes
+import com.veen.homechefrider.model.report.received.ReceivedRes
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -131,5 +137,40 @@ interface API {
         @Header("Authorization")token:String,
         @Body dashboardReq: DashboardReq
     ): Call<DashboardRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("complete_order")
+    fun completeorder(
+            @Header("Authorization")token:String,
+            @Body reportReq: ReportReq
+    ): Call<CompleteRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("received_payments")
+    fun receivedpayments(
+            @Header("Authorization")token:String,
+            @Body reportReq: ReportReq
+    ): Call<ReceivedRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("pending_payments")
+    fun pendingpayments(
+            @Header("Authorization")token:String,
+            @Body reportReq: ReportReq
+    ): Call<ReceivedRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("escalated_order")
+    fun escalatedorder(
+            @Header("Authorization")token:String,
+            @Body reportReq: ReportReq
+    ): Call<EscalateRes>
+
+    @Headers("Content-Type: application/json")
+    @POST("update_location")
+    fun location(
+            @Header("Authorization")token:String,
+            @Body locationReq: LocationReq
+    ): Call<LocationRes>
 
 }

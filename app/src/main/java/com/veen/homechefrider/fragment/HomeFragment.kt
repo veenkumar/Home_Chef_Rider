@@ -1,11 +1,14 @@
 package com.veen.homechefrider.fragment
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +26,15 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.GroundOverlayOptions
 import com.google.android.gms.maps.model.LatLng
 import com.veen.homechefrider.R
+import com.veen.homechefrider.activity.MainActivity
+import com.veen.homechefrider.api.RetrofitInstance
 import com.veen.homechefrider.databinding.FragmentHomeBinding
+import com.veen.homechefrider.model.location.LocationReq
+import com.veen.homechefrider.model.location.LocationRes
+import com.veen.homechefrider.utils.AppUtils
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 class HomeFragment : Fragment(), OnMapReadyCallback {
@@ -117,8 +128,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                             mMap.addGroundOverlay(androidOverlay)
 
 
-
-
+                            locationUpdate()
 
                             /*mMap.setOnPoiClickListener { poi ->
                                 val poiMarker = mMap.addMarker(
@@ -139,6 +149,39 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                         }
                     }
                 }, Looper.getMainLooper())
+    }
+
+    private fun locationUpdate() {
+        try {
+            val getsaveToken = AppUtils.getsaveToken(requireContext())
+            val getsaveLogin = AppUtils.getsaveLogin(requireContext())
+
+            RetrofitInstance.instence?.location(getsaveToken, LocationReq(
+                    currentLocationLatitute.toString(),
+                    currentLocationLongitute.toString(),
+                    getsaveLogin.toInt()
+            ))!!.enqueue(object : Callback<LocationRes> {
+                override fun onResponse(call: Call<LocationRes>, response: Response<LocationRes>) {
+                    if (response.isSuccessful) {
+                        currentLocationFetch()
+                    }
+                }
+
+                override fun onFailure(call: Call<LocationRes>, t: Throwable) {
+                    Log.d("TAG", "onFailure: Failed")
+                }
+            })
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun currentLocationFetch() {
+        Handler().postDelayed(
+                {
+                    locationUpdate()
+                }, 10000L
+        )
     }
 
     private fun isPermissionGranted() : Boolean {

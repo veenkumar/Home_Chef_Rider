@@ -61,4 +61,24 @@
         android:name="com.veen.homechefrider.fragment.side.ViewComplain"
         android:label="Send Complain"
         tools:layout="@layout/fragment_view_complain" />
+    <fragment
+        android:id="@+id/completeOrder"
+        android:name="com.veen.homechefrider.fragment.side.viewreports.CompleteOrders"
+        android:label="Complete Order"
+        tools:layout="@layout/fragment_complete_orders" />
+    <fragment
+        android:id="@+id/escalateOrder"
+        android:name="com.veen.homechefrider.fragment.side.viewreports.EscalatedOrders"
+        android:label="Escalated Order"
+        tools:layout="@layout/fragment_escalated_orders" />
+    <fragment
+        android:id="@+id/pendingPayments"
+        android:name="com.veen.homechefrider.fragment.side.viewreports.PendingPayments"
+        android:label="Pending Payment"
+        tools:layout="@layout/fragment_pending_payments" />
+    <fragment
+        android:id="@+id/receivedPayments"
+        android:name="com.veen.homechefrider.fragment.side.viewreports.ReceivedPayments"
+        android:label="Received Payment"
+        tools:layout="@layout/fragment_received_payments" />
 </navigation>

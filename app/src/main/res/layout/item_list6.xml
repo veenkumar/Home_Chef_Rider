@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_8dp">
+
+    <TextView
+        android:id="@+id/etorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8dp"
+        android:text="Order Id:- "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/etorderID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/etorder"
+        android:padding="@dimen/_8dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/etorderdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etorder"
+        android:padding="@dimen/_8dp"
+        android:text="Order Date:- "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/etorderdateID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etorderID"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/etorderdate"
+        android:padding="@dimen/_8dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/etorderamount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etorderdate"
+        android:padding="@dimen/_8dp"
+        android:text="Total Amount:- "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/etorderamountID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etorderdateID"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/etorderamount"
+        android:padding="@dimen/_8dp"
+        android:textSize="16sp" />
+</RelativeLayout>
